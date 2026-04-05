@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: public
+    database: stocks
+    schema: public
+    tables:
+      - name: stock_prices
+      - name: dim_stocks
+      - name: dim_dates
