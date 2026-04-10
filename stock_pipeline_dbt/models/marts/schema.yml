@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_stocks
+    description: "Company dimension table with stock metadata"
+    columns:
+      - name: symbol
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: "Full company name"
+        data_tests:
+          - not_null
+      - name: sector
+        description: "Business sector"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['Technology', 'Automotive', 'Consumer Cyclical']
+
+  - name: fct_stock_prices
+    description: "Daily stock price fact table"
+    columns:
+      - name: symbol
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: price_date
+        description: "Trading date"
+        data_tests:
+          - not_null
+      - name: close_price
+        description: "Closing price"
+        data_tests:
+          - not_null
+      - name: price_direction
+        description: "Direction of price movement"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['UP', 'DOWN', 'FLAT']
