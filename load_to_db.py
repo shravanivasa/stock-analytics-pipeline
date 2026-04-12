@@ -1,17 +1,15 @@
 import psycopg2
 import pandas as pd
 
-
 conn = psycopg2.connect(
-    host="localhost",
-    port=5433,
-    database="stocks",
+    host="db.dvpwyivylcezwyftudxg.supabase.co",
+    port=5432,
+    database="postgres",
     user="postgres",
-    password="password"
+    password="Jobsearch@3105"
 )
 
 cursor = conn.cursor()
-
 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS stock_prices (
@@ -28,10 +26,8 @@ cursor.execute("""
 conn.commit()
 print("Table created!")
 
-
 df = pd.read_csv("all_stocks_data.csv")
 print(f"Loaded {len(df)} rows from CSV")
-
 
 for _, row in df.iterrows():
     cursor.execute("""

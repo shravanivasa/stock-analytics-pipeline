@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: public
-    database: stocks
+    database: postgres
     schema: public
     tables:
       - name: stock_prices
